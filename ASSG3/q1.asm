@@ -132,15 +132,13 @@ _start:
 	accept_array:
 		pusha
 		mov eax, 0
-		mov cl, 0
 	start_accept:
-		cmp cl, byte[n]
+		cmp al, byte[n]
 		je exit_func
 		call read_num
 		mov bx, word[num]
-		mov word[array + eax], bx
-		add eax, 2
-		inc cl
+		mov word[array + 2*eax], bx
+		inc eax
 		jmp start_accept
 
 	read_num:

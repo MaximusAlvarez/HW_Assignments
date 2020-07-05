@@ -2,7 +2,7 @@
 
 CC = nasm                       # compiler to use
 
-LINKERFLAG = -melf_i386
+LINKERFLAG = -m32
 
 SRCS := $(wildcard *.asm)
 BINS := $(SRCS:%.asm=%)
@@ -11,7 +11,7 @@ all: ${BINS}
 
 %: %.o
 	@echo "Checking.."
-	ld ${LINKERFLAG} $< -o $@
+	gcc ${LINKERFLAG} $< -o $@
 
 %.o: %.asm
 	@echo "Creating object.."
